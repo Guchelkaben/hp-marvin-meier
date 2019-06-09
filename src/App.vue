@@ -18,3 +18,9 @@
         }
     }
 </script>
+
+<style>
+    * {
+        color: #FFF748;
+    }
+</style>
