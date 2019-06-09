@@ -6,7 +6,7 @@
 </template>
 
 <script>
-
+    require("@babel/polyfill");
     import Header from './components/header/Header.vue';
     import Projects from './components/project/Projects.vue';
 
