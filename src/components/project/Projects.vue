@@ -56,13 +56,6 @@
 
 </script>
 <style scoped>
-    .project-wrapper {
-        position: relative;
-        background-color: #64C9FF;
-        width: 100%;
-        height: calc(100vh - 232px);
-    }
-
     .project-title {
         font: 600 1.8em/1 'Raleway', sans-serif;
         color: #3C1A5B;
@@ -71,6 +64,13 @@
         letter-spacing: .5em;
         width: 100%;
         border-bottom: 5px solid #3C1A5B;
+    }
+
+    .project-wrapper {
+        position: relative;
+        background-color: #64C9FF;
+        width: 100%;
+        height: calc(100vh - 251px);
     }
 
     .project-title span {

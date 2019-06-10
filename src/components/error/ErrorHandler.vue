@@ -32,10 +32,6 @@
 </script>
 
 <style scoped>
-    .error-container {
-        height: calc(100vh - 232px);
-    }
-
     .error-img {
         max-height: 350px;
     }
