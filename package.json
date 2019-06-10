@@ -13,6 +13,7 @@
     "core-js": "^2.6.5",
     "lib": "^4.0.2",
     "vue": "^2.6.10",
+    "vue-clipboard2": "^0.3.0",
     "vue-hot-reload-api": "^2.3.3"
   },
   "devDependencies": {
@@ -24,6 +25,7 @@
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "parcel-bundler": "^1.12.3",
+    "pug": "^2.0.3",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {

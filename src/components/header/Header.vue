@@ -3,10 +3,10 @@
         <div class="container p-3">
             <div class="row justify-content-between">
                 <div v-show="show" class="d-flex flex-column justify-content-between justify-content-center">
-                    <mm-header-link class="mm-header-link" v-for="image in links" :image="image" :key="image.name"></mm-header-link>
+                    <mm-header-link class="mm-header-link" v-for="image in links" :image="image"
+                                    :key="image.name"></mm-header-link>
                 </div>
                 <div>
-                    
 
                 </div>
                 <div>
@@ -79,6 +79,7 @@
     .m-font-color {
         color: #FFF748;
         font-family: 'Open Sans', sans-serif;
+        font-weight: 700;
     }
 
     .img-avatar {
@@ -98,6 +99,7 @@
         background-color: #64C9FF;
         max-width: 250px;
         font-family: 'Open Sans', sans-serif;
+        font-weight: 700;
     }
 
     #speechBubble::before {
