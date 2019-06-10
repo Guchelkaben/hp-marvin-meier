@@ -14,7 +14,8 @@
         props: {
             statusCode: {
                 type: Number,
-                required: true
+                required: true,
+                default: 0
             }
         },
         methods: {

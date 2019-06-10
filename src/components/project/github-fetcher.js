@@ -18,3 +18,13 @@ export async function fetchRepoByName(name) {
 
     return Promise.reject({status: res.status});
 }
+
+export async function fetchRepoLanguages(repo) {
+    const res = await fetch(`${baseUrl}repos/guchelkaben/${repo}/languages`);
+
+    if (res.ok) {
+        return await res.json();
+    }
+
+    return Promise.reject({status: res.status});
+}

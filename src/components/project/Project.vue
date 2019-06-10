@@ -1,7 +1,11 @@
 <template lang="pug">
     .card
         .card-body
-            h5.card-title {{formatImageName(project.name)}}
+            .d-flex.justify-content-between
+                h5.card-title {{capitalizeFirstLetter(project.name)}}
+                div.prog-lang(v-if="languages.length > 0")
+                    | written in: &nbsp;
+                    span.lang-java(v-for="progLang in languages") {{capitalizeFirstLetter(progLang)}}
             p.card-text {{repo.description}}
             .d-flex.align-items-center.justify-content-between
                 .mr-2
@@ -10,7 +14,7 @@
 </template>
 
 <script>
-    import {fetchRepoByName} from './github-fetcher';
+    import {fetchRepoByName, fetchRepoLanguages} from './github-fetcher';
     import {capitalizeFirstLetter} from '~/src/components/utils/string-helper.js';
     import InputClipboard from '~/src/components/input-clipboard/InputClipboard.vue';
 
@@ -25,19 +29,27 @@
         data() {
             return {
                 repo: {},
-                link: 'OnLoad'
+                link: 'OnLoad',
+                languages: []
             }
         },
 
         methods: {
-            formatImageName(name) {
+            capitalizeFirstLetter(name) {
                 return capitalizeFirstLetter(name);
             }
         },
 
         async created() {
-            this.repo = await fetchRepoByName(this.project.url);
-            this.link = this.repo.git_url;
+            try {
+                this.repo = await fetchRepoByName(this.project.url);
+                this.link = this.repo.html_url;
+
+                const langResponse = await fetchRepoLanguages(this.repo.name);
+                this.languages = Object.keys(langResponse);
+            } catch ({status}) {
+                this.$emit('error', status);
+            }
         },
 
         components: {
@@ -66,6 +78,31 @@
         border: 1px solid #63C9FF;
         transform: scale(1.1);
         transition: transform .3s, background-color .3s, border .3s;
+    }
+
+    .prog-lang span {
+        margin: 2px;
+        display: inline-flex;
+        align-content: center;
+        justify-content: center;
+        min-width: 0;
+        padding-left: 4px;
+        padding-right: 4px;
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 3px;
+        font-size: .8rem;
+        line-height: 1.84615385;
+        text-decoration: none;
+        vertical-align: middle;
+        white-space: nowrap;
+        border-color: transparent;
+        background-color: #E1ECF4;
+        color: #2c5777;
+    }
+
+    .lang-java {
+        background-color: brown;
     }
 
     .card-text {
