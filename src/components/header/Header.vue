@@ -5,6 +5,7 @@
                 .d-flex.flex-column.justify-content-between.justify-content-center(v-show='show')
                     mm-header-link.mm-header-link(v-for='image in links', :image='image', :key='image.name')
                 div
+
                 div
                     .speech-bubble-wrapper
                         #speechBubble.p-2

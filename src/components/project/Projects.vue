@@ -1,5 +1,9 @@
 <template lang="pug">
     .project-wrapper
+        .arrow-left(@click="loadNextPage")
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 10 16"><path fill-rule="evenodd" d="M6 3L0 8l6 5v-3h4V6H6V3z"/></svg>
+        .arrow-right(@click="loadBeforePage")
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 10 16"><path fill-rule="evenodd" d="M10 8L4 3v3H0v4h4v3l6-5z"/></svg>
         .container.collapsing-margins-none
             .mt-5(v-if="state === 'success'")
                 .row
@@ -45,6 +49,12 @@
             onError(status) {
                 this.error.statusCode = status;
                 this.state = 'fail';
+            },
+            loadNextPage() {
+
+            },
+            loadBeforePage() {
+
             }
         },
 
@@ -71,6 +81,21 @@
         background-color: #64C9FF;
         width: 100%;
         height: calc(100vh - 251px);
+    }
+
+    .arrow-left, .arrow-right  {
+        position: absolute;
+        top: 40%;
+        fill: rgba(60,26,91,0.5);
+        transform: scale(8);
+    }
+
+    .arrow-left {
+        left: 8%;
+    }
+
+    .arrow-right {
+        right: 8%;
     }
 
     .project-title span {
