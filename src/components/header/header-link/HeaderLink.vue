@@ -1,12 +1,10 @@
-<template>
-    <div class="d-flex p-1">
-        <div class="header-link-img-wrapper d-flex justify-content-center align-items-center">
-            <img class="d-block img-fluid header-link-img" :src="image.path" :alt="image.name"/>
-        </div>
-        <div class="p-1 ml-2">
-            <a :href="image.href"><span class="m-font-color"> {{formatImageName(image.name)}} </span></a>
-        </div>
-    </div>
+<template lang="pug">
+    .d-flex.p-1
+        .header-link-img-wrapper.d-flex.justify-content-center.align-items-center
+            img.d-block.img-fluid.header-link-img(:src='image.path', :alt='image.name')
+        .p-1.ml-2
+            a(:href='image.href', target='_blank')
+                span.m-font-color  {{formatImageName(image.name)}}
 </template>
 
 <script>
@@ -14,9 +12,9 @@
 
     export default {
         methods: {
-          formatImageName(name) {
-              return capitalizeFirstLetter(name);
-          }
+            formatImageName(name) {
+                return capitalizeFirstLetter(name);
+            }
         },
         props: {
             image: {

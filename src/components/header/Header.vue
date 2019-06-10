@@ -1,27 +1,20 @@
-<template>
-    <div class="header">
-        <div class="container p-3">
-            <div class="row justify-content-between">
-                <div v-show="show" class="d-flex flex-column justify-content-between justify-content-center">
-                    <mm-header-link class="mm-header-link" v-for="image in links" :image="image"
-                                    :key="image.name"></mm-header-link>
-                </div>
-                <div>
-
-                </div>
-                <div>
-                    <div class="speech-bubble-wrapper">
-                        <div id="speechBubble" class="p-2">
-                            <div>
-                                <span>Hi ! Ich bin <span>Marvin</span> und <br> bin Software-Entwickler</span>
-                            </div>
-                        </div>
-                    </div>
-                    <img class="img-fluid img-avatar" src="~src/assets/images/avatar.png"/>
-                </div>
-            </div>
-        </div>
-    </div>
+<template lang="pug">
+    div.header
+        .container.p-3
+            .row.justify-content-between
+                .d-flex.flex-column.justify-content-between.justify-content-center(v-show='show')
+                    mm-header-link.mm-header-link(v-for='image in links', :image='image', :key='image.name')
+                div
+                div
+                    .speech-bubble-wrapper
+                        #speechBubble.p-2
+                            div
+                                span
+                                    | Hi ! I am&nbsp;
+                                    span Marvin
+                                    br
+                                    | Nice to see you here!
+                    img.img-fluid.img-avatar(src='~src/assets/images/avatar.png')
 </template>
 
 <script>

@@ -1,40 +1,41 @@
-<template>
-    <div class="project-wrapper">
-        <div class="container" v-if="state === 'success'">
-            <h1>Public GitHub projects</h1>
-            <div class="row flex-row justify-content-center mt-5">
-                <mm-project v-for="project in projects" class="col-md-12 col-lg-6 " :project="project"></mm-project>
-            </div>
-        </div>
-        <div v-else="state === 'fail'">
-            
-        </div>
-    </div>
+<template lang="pug">
+    .project-wrapper
+        .container
+            div(v-if="state === 'success'")
+                h1 Public GitHub projects
+                .row.flex-row.justify-content-lg-start.mt-5
+                    mm-project.col-md-12.col-lg-6(v-for='project in projects', :project='project')
+            div(v-else="state === 'fail'")
+                mm-error(:statuscode='error.statusCode')
 </template>
 
 <script>
     import {fetchRepositories} from './github-fetcher';
     import Project from '~/src/components/project/Project.vue';
+    import ErrorHandler from '~/src/components/error/ErrorHandler.vue';
 
     export default {
         data() {
             return {
                 projects: [],
-                state: 'init'
+                state: 'init',
+                error: {
+                    statusCode: 0
+                }
             };
         },
         async created() {
             try {
                 this.projects = await fetchRepositories();
                 this.state = 'success';
-            } catch (e) {
+            } catch ({status}) {
                 this.state = 'fail';
+                this.error.statusCode = status;
             }
-
-            console.log(this.projects);
         },
         components: {
-            mmProject: Project
+            mmProject: Project,
+            mmError: ErrorHandler
         }
     }
 

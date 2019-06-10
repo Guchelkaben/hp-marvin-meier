@@ -1,20 +1,17 @@
-<template>
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">{{project.name}}</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <div class="d-flex">
-                <div >
-                    <a :href="repo.html_url" class="btn btn-primary">GitHub</a>
-                </div>
-                <mm-clipboard></mm-clipboard>
-            </div>
-        </div>
-    </div>
+<template lang="pug">
+    .card
+        .card-body
+            h5.card-title {{formatImageName(project.name)}}
+            p.card-text {{repo.description}}
+            .d-flex.align-items-center.justify-content-between
+                .mr-2
+                    a.btn.btn-primary(:href='repo.html_url') GitHub
+                mm-clipboard(v-model='link')
 </template>
 
 <script>
     import {fetchRepoByName} from './github-fetcher';
+    import {capitalizeFirstLetter} from '~/src/components/utils/string-helper.js';
     import InputClipboard from '~/src/components/input-clipboard/InputClipboard.vue';
 
     export default {
@@ -28,13 +25,13 @@
         data() {
             return {
                 repo: {},
-                link: 'asd'
+                link: 'OnLoad'
             }
         },
 
         methods: {
-            onSuccess() {
-                console.log("yeah");
+            formatImageName(name) {
+                return capitalizeFirstLetter(name);
             }
         },
 
@@ -44,13 +41,12 @@
         },
 
         components: {
-            mmClipboard : InputClipboard
+            mmClipboard: InputClipboard
         }
     }
 </script>
 
-<style>
-
+<style scoped>
     .card * {
         color: #3C1A5B;
     }
@@ -61,15 +57,19 @@
         border: 1px solid #FFF748;
         font-family: 'Open Sans', sans-serif;
         font-weight: 600;
+        transform: scale(1);
+        transition: transform .3s, background-color .3s;
     }
 
-    .copy-input {
-        width: 100%;
-        font-size: ;
+    .btn-primary:hover {
+        background-color: #63C9FF;
+        border: 1px solid #63C9FF;
+        transform: scale(1.1);
+        transition: transform .3s, background-color .3s, border .3s;
     }
 
-    .copy-input-wrapper {
-        width: 100%;
-        height: 100%;
+    .card-text {
+        max-height: 50px;
+        min-height: 50px;
     }
 </style>
