@@ -23,8 +23,8 @@
 
 <script>
     import {fetchRepositories} from './github-fetcher';
-    import Project from '~/src/components/project/Project.vue';
-    import ErrorHandler from '~/src/components/error/ErrorHandler.vue';
+    import Project from '~/components/project/Project.vue';
+    import ErrorHandler from '~/components/error/ErrorHandler.vue';
 
     export default {
         data() {

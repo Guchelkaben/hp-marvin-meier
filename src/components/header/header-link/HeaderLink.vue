@@ -8,7 +8,7 @@
 </template>
 
 <script>
-    import {capitalizeFirstLetter} from '~/src/components/utils/string-helper.js';
+    import {capitalizeFirstLetter} from '~/components/utils/string-helper.js';
 
     export default {
         methods: {

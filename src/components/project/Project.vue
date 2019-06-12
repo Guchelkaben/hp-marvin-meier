@@ -15,8 +15,8 @@
 
 <script>
     import {fetchRepoByName, fetchRepoLanguages} from './github-fetcher';
-    import {capitalizeFirstLetter} from '~/src/components/utils/string-helper.js';
-    import InputClipboard from '~/src/components/input-clipboard/InputClipboard.vue';
+    import {capitalizeFirstLetter} from '~/components/utils/string-helper.js';
+    import InputClipboard from '~/components/input-clipboard/InputClipboard.vue';
 
     export default {
         props: {

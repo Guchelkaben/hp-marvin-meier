@@ -15,12 +15,12 @@
                                     span Marvin
                                     br
                                     | Nice to see you here!
-                    img.img-fluid.img-avatar(src='~src/assets/images/avatar.png')
+                    img.img-fluid.img-avatar(src='~/assets/images/avatar.png')
 </template>
 
 <script>
     import images from '../../assets/images/*.png';
-    import {headerLinks} from '~/src/assets/files/header-links.js';
+    import {headerLinks} from '~/assets/files/header-links.js';
     import HeaderLink from './header-link/HeaderLink.vue';
     import anime from 'animejs';
 
