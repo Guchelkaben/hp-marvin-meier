@@ -7,7 +7,7 @@ cache:
 script:
   - npm run build
 deploy:
-  localDir: ./dist/
+  local-dir: dist
   provider: pages
   local_dir: dist
   skip_cleanup: true
