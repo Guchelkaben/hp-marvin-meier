@@ -1,28 +1,28 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div>
+        <mm-header></mm-header>
+        <mm-projects></mm-projects>
+        <mm-imprint></mm-imprint>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+    require("@babel/polyfill");
+    import Header from './components/header/Header.vue';
+    import Projects from './components/project/Projects.vue';
+    import Imprint from './components/imprint/Imprint.vue';
 
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
-}
+    export default {
+        components: {
+            mmHeader: Header,
+            mmProjects: Projects,
+            mmImprint: Imprint
+        }
+    }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+    * {
+        color: #FFF748;
+    }
 </style>
